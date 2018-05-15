@@ -31,6 +31,22 @@ form input.sansLabel {
     margin-left: 200px;
 }
 
+/* Tableaux ---------------------------------- */
+table {
+	border-collapse: collapse;
+}
+tr.pair {
+	background-color: #eee;
+}	
+th {
+    color: #0568CD;
+    border: 1px solid #0568CD;
+    padding: 5px;
+}
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
 /* Styles et couleurs -------------------------------------------------------------------------- */
 .requis {
     color: #c00;

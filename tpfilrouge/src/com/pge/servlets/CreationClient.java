@@ -1,11 +1,14 @@
 package com.pge.servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pge.beans.Client;
 import com.pge.forms.CreationClientForm;
@@ -17,6 +20,7 @@ public class CreationClient extends HttpServlet {
     private static final long  serialVersionUID = 8036806611130572529L;
     public static final String ATT_CLIENT       = "client";
     public static final String ATT_FORM         = "form";
+    public static final String SESSION_LIST_CLIENTS = "listeClients";
 
     public static final String VUE_SUCCES       = "/WEB-INF/afficherClient.jsp";
     public static final String VUE_FORM         = "/WEB-INF/creerClient.jsp";
@@ -39,7 +43,17 @@ public class CreationClient extends HttpServlet {
         request.setAttribute( ATT_FORM, form );
 
         if ( form.getErreurs().isEmpty() ) {
-            /* Si aucune erreur, alors affichage de la fiche récapitulative */
+            /* Si aucune erreur, alors :
+             * - enregistrement du client en session
+             * - affichage de la fiche récapitulative */
+        	HttpSession session = request.getSession();
+        	Map<String, Client> listeClients = (Map<String, Client>)session.getAttribute(SESSION_LIST_CLIENTS);
+        	if (listeClients == null ) {
+        		listeClients = new HashMap<String, Client>();
+        	}
+        	listeClients.put(client.getNom(), client);
+        	session.setAttribute(SESSION_LIST_CLIENTS, listeClients);
+        	
             this.getServletContext().getRequestDispatcher( VUE_SUCCES ).forward( request, response );
         } else {
             /* Sinon, ré-affichage du formulaire de création avec les erreurs */
