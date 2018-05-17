@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Affichage d'un client</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"/>" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/bootstrap/dist/css/bootstrap.css"/>" />
     </head>
     <body>
         <c:import url="/inc/menu.jsp" />

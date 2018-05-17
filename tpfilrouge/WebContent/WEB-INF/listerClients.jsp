@@ -4,38 +4,40 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>TP Fil rouge - Liste des clients existants</title>
-		<link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"/>" />
+		<link type="text/css" rel="stylesheet" href="<c:url value="/inc/bootstrap/css/bootstrap.css"/>" />
 	</head>
 	<body>
 		<c:import url="/inc/menu.jsp" />
-		<c:choose>
-			<c:when test="${ !empty listeClients }">
-				<table>
-					<thead>
-						<tr>
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th width="50%">Adresse</th>
-							<th>Téléphone</th>
-							<th>Email</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${ listeClients }" var="client" varStatus="boucle" >
-							<tr class="${ boucle.index %2 == 0 ? 'pair' : 'impair' }">
-								<td><c:out value="${ client.value.nom }"/></td>
-								<td><c:out value="${ client.value.prenom }"/></td>
-								<td><c:out value="${ client.value.adresse }"/></td>
-								<td><c:out value="${ client.value.telephone }"/></td>
-								<td><c:out value="${ client.value.email }"/></td>
+		<div class="container">
+			<c:choose>
+				<c:when test="${ !empty listeClients }">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Nom</th>
+								<th scope="col">Prénom</th>
+								<th scope="col">Adresse</th>
+								<th scope="col">Téléphone</th>
+								<th scope="col">Email</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:when>
-			<c:otherwise>
-				<span class="info">Aucun client enregistré</span>
-			</c:otherwise>
-		</c:choose>
+						</thead>
+						<tbody>
+							<c:forEach items="${ listeClients }" var="client" varStatus="boucle" >
+								<tr>
+									<td><c:out value="${ client.value.nom }"/></td>
+									<td><c:out value="${ client.value.prenom }"/></td>
+									<td><c:out value="${ client.value.adresse }"/></td>
+									<td><c:out value="${ client.value.telephone }"/></td>
+									<td><c:out value="${ client.value.email }"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<span class="info">Aucun client enregistré</span>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</body>
 </html>
