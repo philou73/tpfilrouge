@@ -4,19 +4,19 @@
     <head>
         <meta charset="utf-8" />
         <title>Affichage d'une commande</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/bootstrap/dist/css/bootstrap.css"/>" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/bootstrap/css/bootstrap.css"/>" />
     </head>
     <body>
         <c:import url="/inc/menu.jsp" />
-        <div id="corps">
-            <p class="info">${ form.resultat }</p>
-            <p>Client</p>
+        <div class="container">
+            <div class="alert alert-success">${ form.resultat }</div>
+            <h6>Client</h6>
             <p>Nom : <c:out value="${ commande.client.nom }"/></p>
             <p>Prénom : <c:out value="${ commande.client.prenom }"/></p>
             <p>Adresse : <c:out value="${ commande.client.adresse }"/></p>
             <p>Numéro de téléphone : <c:out value="${ commande.client.telephone }"/></p>
             <p>Email : <c:out value="${ commande.client.email }"/></p>
-            <p>Commande</p>
+            <h6>Commande</h6> 
             <p>Date  : <c:out value="${ commande.date }"/></p> 
             <p>Montant  : <c:out value="${ commande.montant }"/></p> 
             <p>Mode de paiement  : <c:out value="${ commande.modePaiement }"/></p> 

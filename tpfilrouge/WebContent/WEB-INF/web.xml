@@ -14,6 +14,14 @@
 		<servlet-name>ListerClients</servlet-name>
 		<servlet-class>com.pge.servlets.ListerClients</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ListerCommandes</servlet-name>
+		<servlet-class>com.pge.servlets.ListerCommandes</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SuppressionClient</servlet-name>
+		<servlet-class>com.pge.servlets.SuppressionClient</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>CreationClient</servlet-name>
@@ -26,6 +34,14 @@
 	<servlet-mapping>
 		<servlet-name>ListerClients</servlet-name>
 		<url-pattern>/listerClients</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListerCommandes</servlet-name>
+		<url-pattern>/listerCommandes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionClient</servlet-name>
+		<url-pattern>/suppressionClient</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>

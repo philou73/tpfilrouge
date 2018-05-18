@@ -19,6 +19,7 @@
 								<th scope="col">Adresse</th>
 								<th scope="col">Téléphone</th>
 								<th scope="col">Email</th>
+								<th scope="col">Suppression</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -29,6 +30,7 @@
 									<td><c:out value="${ client.value.adresse }"/></td>
 									<td><c:out value="${ client.value.telephone }"/></td>
 									<td><c:out value="${ client.value.email }"/></td>
+									<td class="text-center"><a href="<c:url value="/suppressionClient" />?suppression=${client.value.nom}"><img src="<c:url value="/inc/supprimer.png"/>" /></a>
 								</tr>
 							</c:forEach>
 						</tbody>
