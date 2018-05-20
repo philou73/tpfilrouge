@@ -31,10 +31,10 @@
 		                <div id="listeClients" style="display: none;">
 		                	<div class="form-group row">
 		                		<label for="selectClient" class="col-sm-3 col-form-label col-form-label-sm">Choix du client</label>
-		                		<select class="form-control col-sm-8" id="selectClient"> 
+		                		<select class="form-control col-sm-8" name="selectClient" id="selectClient"> 
 		                			<option> -- Sélectionnez un client --</option>
 		                			<c:forEach var="client" items="${listeClients}">
-		                				<option value="<c:out value="${client.value.nom}" /> "><c:out value="${client.value.nom}" /></option>
+		                				<option value="<c:out value="${client.value.nom}" />"><c:out value="${client.value.prenom}" /> <c:out value="${client.value.nom}" /></option>
 		                			</c:forEach>
 		                		</select>
 		                	</div>

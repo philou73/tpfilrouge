@@ -4,16 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.pge.beans.Client;
 
 public final class CreationClientForm {
+	private static final String CHAMP_CHOIX		= "selectionClient";
+	private static final String CHAMP_SELECT_CLIENT = "selectClient";
     private static final String CHAMP_NOM       = "nomClient";
     private static final String CHAMP_PRENOM    = "prenomClient";
     private static final String CHAMP_ADRESSE   = "adresseClient";
     private static final String CHAMP_TELEPHONE = "telephoneClient";
     private static final String CHAMP_EMAIL     = "emailClient";
-
+    private static final String SESSION_CLIENTS = "listeClients";
+    
     private String              resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
 
@@ -33,52 +37,68 @@ public final class CreationClientForm {
         String email = getValeurChamp( request, CHAMP_EMAIL );
 
         Client client = new Client();
-
-        try {
-            validationNom( nom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_NOM, e.getMessage() );
-        }
-        client.setNom( nom );
-
-        try {
-            validationPrenom( prenom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PRENOM, e.getMessage() );
-        }
-        client.setPrenom( prenom );
-
-        try {
-            validationAdresse( adresse );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_ADRESSE, e.getMessage() );
-        }
-        client.setAdresse( adresse );
-
-        try {
-            validationTelephone( telephone );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_TELEPHONE, e.getMessage() );
-        }
-        client.setTelephone( telephone );
-
-        try {
-            validationEmail( email );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_EMAIL, e.getMessage() );
-        }
-        client.setEmail( email );
-
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la création du client.";
+        
+        /* On vérifie si l'utilisateur a sélectionné un client existant. 
+         * Si oui, on le charge, 
+         * sinon, on gère la création d'un nouveau client
+         */
+        if (request.getParameter(CHAMP_CHOIX) != null) {
+        	Map<String, String[]> parametres = request.getParameterMap();
+        	String selectClient = getValeurChamp(request, CHAMP_SELECT_CLIENT);
+        	
+        	// On doit récupérer le client en session
+        	HttpSession session = request.getSession();
+        	Map<String, Client> listeClients = (Map<String, Client>) session.getAttribute(SESSION_CLIENTS);
+        	
+        	client = (Client) listeClients.get(selectClient);
         } else {
-            resultat = "Échec de la création du client.";
-        }
+        	// On gère la création d'un nouveau client
+		    try {
+		        validationNom( nom );
+		    } catch ( Exception e ) {
+		        setErreur( CHAMP_NOM, e.getMessage() );
+		    }
+		    client.setNom( nom );
+		
+		    try {
+		        validationPrenom( prenom );
+		    } catch ( Exception e ) {
+		        setErreur( CHAMP_PRENOM, e.getMessage() );
+		    }
+		    client.setPrenom( prenom );
+		
+		    try {
+		        validationAdresse( adresse );
+		    } catch ( Exception e ) {
+		        setErreur( CHAMP_ADRESSE, e.getMessage() );
+		    }
+		    client.setAdresse( adresse );
+		
+		    try {
+		        validationTelephone( telephone );
+		    } catch ( Exception e ) {
+		        setErreur( CHAMP_TELEPHONE, e.getMessage() );
+		    }
+		    client.setTelephone( telephone );
+		
+		    try {
+		        validationEmail( email );
+		    } catch ( Exception e ) {
+		        setErreur( CHAMP_EMAIL, e.getMessage() );
+		    }
+		    client.setEmail( email );
+		
+		    if ( erreurs.isEmpty() ) {
+		        resultat = "Succès de la création du client.";
+		    } else {
+		        resultat = "Échec de la création du client.";
+		    }
+		}
 
         return client;
-    }
-
-    private void validationNom( String nom ) throws Exception {
+	}
+	
+	private void validationNom( String nom ) throws Exception {
         if ( nom != null ) {
             if ( nom.length() < 2 ) {
                 throw new Exception( "Le nom d'utilisateur doit contenir au moins 2 caractères." );

@@ -22,6 +22,10 @@
 		<servlet-name>SuppressionClient</servlet-name>
 		<servlet-class>com.pge.servlets.SuppressionClient</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SuppressionCommande</servlet-name>
+		<servlet-class>com.pge.servlets.SuppressionCommande</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>CreationClient</servlet-name>
@@ -42,6 +46,10 @@
 	<servlet-mapping>
 		<servlet-name>SuppressionClient</servlet-name>
 		<url-pattern>/suppressionClient</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionCommande</servlet-name>
+		<url-pattern>/suppressionCommande</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>

@@ -21,6 +21,7 @@
 								<th scope="col">Statut paiement</th>
 								<th scope="col">Mode livraison</th>
 								<th scope="col">Statut livraison</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -33,6 +34,7 @@
 									<td><c:out value="${ commande.value.statutPaiement }"/></td>
 									<td><c:out value="${ commande.value.modeLivraison }"/></td>
 									<td><c:out value="${ commande.value.statutLivraison }"/></td>
+									<td><a href="<c:url value="/suppressionCommande" />?dateCommande=<c:out value="${ commande.value.date }" />" ><img src="<c:url value="/inc/supprimer.png"/>" /></a>
 								</tr>
 							</c:forEach>
 						</tbody>
