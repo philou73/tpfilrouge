@@ -34,7 +34,7 @@
 									<td><c:out value="${ commande.value.statutPaiement }"/></td>
 									<td><c:out value="${ commande.value.modeLivraison }"/></td>
 									<td><c:out value="${ commande.value.statutLivraison }"/></td>
-									<td><a href="<c:url value="/suppressionCommande" />?dateCommande=<c:out value="${ commande.value.date }" />" ><img src="<c:url value="/inc/supprimer.png"/>" /></a>
+									<td><a href="<c:url value="/suppressionCommande"><c:param name="suppression" value="${ commande.key }" /></c:url>" ><img src="<c:url value="/inc/supprimer.png"/>" alt="Supprimer" /></a>
 								</tr>
 							</c:forEach>
 						</tbody>

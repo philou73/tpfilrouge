@@ -16,7 +16,7 @@ public class SuppressionCommande extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String PARAM_CLE_COMMANDE = "dateCommande";
+	private static final String PARAM_CLE_COMMANDE = "suppression";
 	private static final String SESSION_COMMANDES = "listeCommandes";
 	private static final String VUE_COMMANDES 	= "/listerCommandes";
 

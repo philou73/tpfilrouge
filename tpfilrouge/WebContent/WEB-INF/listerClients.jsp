@@ -30,7 +30,7 @@
 									<td><c:out value="${ client.value.adresse }"/></td>
 									<td><c:out value="${ client.value.telephone }"/></td>
 									<td><c:out value="${ client.value.email }"/></td>
-									<td class="text-center"><a href="<c:url value="/suppressionClient" />?suppression=${client.value.nom}"><img src="<c:url value="/inc/supprimer.png"/>" /></a>
+									<td class="text-center"><a href="<c:url value="/suppressionClient"><c:param name="suppression" value="${ client.key }" /></c:url>"><img src="<c:url value="/inc/supprimer.png"/>" /></a>
 								</tr>
 							</c:forEach>
 						</tbody>
