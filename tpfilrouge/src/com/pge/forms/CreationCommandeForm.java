@@ -33,7 +33,7 @@ public final class CreationCommandeForm {
         return resultat;
     }
 
-    public Commande creerCommande( HttpServletRequest request ) {
+    public Commande creerCommande( HttpServletRequest request, String chemin ) {
         /*
          * L'objet métier pour valider la création d'un client existe déjà, il
          * est donc déconseillé de dupliquer ici son contenu ! À la place, il
@@ -41,7 +41,7 @@ public final class CreationCommandeForm {
          * récupérer l'objet Client créé.
          */
         CreationClientForm clientForm = new CreationClientForm();
-        Client client = clientForm.creerClient( request );
+        Client client = clientForm.creerClient( request, chemin );
 
         /*
          * Et très important, il ne faut pas oublier de récupérer le contenu de

@@ -34,4 +34,12 @@
 			<input type="email" placeholder="${form.erreurs['emailClient']}" class="form-control form-control-sm" id="emailClient" name="emailClient" value="<c:out value="${empty form.erreurs['emailClient'] ? client.email : ''}"/>" size="30" maxlength="60" />
 		</div>
 	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label col-form-label-sm" for="imageClient">Image</label>
+		<div class="col-sm-8">
+			<input type="file" class="form-control form-control-sm" id="imageClient" name="imageClient" />
+			<span class="erreurs">${form.erreurs['imageClient'] }</span>
+		</div>
+	</div>
 </div>

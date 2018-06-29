@@ -12,7 +12,7 @@
 <!-- 	        <div class="row"> -->
 <!-- 	        	<div class="col-xs-8"> -->
 	        		<h3>Informations client</h3>
-		            <form method="post" action="<c:url value="/creationClient"/>">
+		            <form method="post" action="<c:url value="/creationClient"/>" enctype="multipart/form-data">
 	                    <c:import url="/inc/inc_client_form.jsp" />
 		                <p class="info">${ form.resultat }</p>
 		                <div>

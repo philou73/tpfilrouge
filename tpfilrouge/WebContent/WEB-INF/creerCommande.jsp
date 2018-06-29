@@ -9,7 +9,7 @@
     <body>
         <c:import url="/inc/menu.jsp" />
         <div class="container">
-            <form method="post" action="<c:url value="/creationCommande"/> ">
+            <form method="post" action="<c:url value="/creationCommande"/> " enctype="multipart/form-data">
                 <%-- Petite astuce ici : placer le client accessible via  
                  l'EL ${ commande.client } dans une variable "client" de 
                  portée request, pour que le code du fragment fonctionne
