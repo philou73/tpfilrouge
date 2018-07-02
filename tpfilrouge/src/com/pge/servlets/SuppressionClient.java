@@ -37,22 +37,25 @@ public class SuppressionClient extends HttpServlet {
         // Suppression des commandes passées par les clients
         @SuppressWarnings( "unchecked" )
         Map<String, Commande> listeCommandes = (Map<String, Commande>) session.getAttribute( SESSION_COMMANDES );
-        Map<String, Commande> newListeCommandes = new HashMap<String, Commande>();
-        Set<String> keySet = listeCommandes.keySet();
+        if ( listeCommandes != null ) {
+            Map<String, Commande> newListeCommandes = new HashMap<String, Commande>();
+            Set<String> keySet = listeCommandes.keySet();
 
-        // listeCommandes.elements();
-        for ( String key : keySet ) {
-            Commande commande = listeCommandes.get( key );
+            // listeCommandes.elements();
+            for ( String key : keySet ) {
+                Commande commande = listeCommandes.get( key );
 
-            if ( !commande.getClient().getNom().equals( client ) ) {
-                newListeCommandes.put( commande.getDate(), commande );
+                if ( !commande.getClient().getNom().equals( client ) ) {
+                    newListeCommandes.put( commande.getDate(), commande );
+                }
             }
+            // On replace la liste des commandes en session
+            session.setAttribute( SESSION_COMMANDES, newListeCommandes );
+
         }
+
         // On replace la liste des clients en session
         session.setAttribute( SESSION_CLIENTS, listeClients );
-
-        // On replace la liste des commandes en session
-        session.setAttribute( SESSION_COMMANDES, newListeCommandes );
 
         // On affiche la vue listerClients.jsp en redirection
         response.sendRedirect( request.getContextPath() + VUE_LISTE );

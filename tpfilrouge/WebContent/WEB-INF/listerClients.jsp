@@ -19,6 +19,7 @@
 								<th scope="col">Adresse</th>
 								<th scope="col">Téléphone</th>
 								<th scope="col">Email</th>
+								<th scope="col">Image</th>
 								<th scope="col">Suppression</th>
 							</tr>
 						</thead>
@@ -30,6 +31,13 @@
 									<td><c:out value="${ client.value.adresse }"/></td>
 									<td><c:out value="${ client.value.telephone }"/></td>
 									<td><c:out value="${ client.value.email }"/></td>
+									<td><c:out value="${ client.value.image }"/><br>
+				                        <%-- On ne construit et affiche un lien vers l'image que si elle existe. --%>
+				                        <c:if test="${ !empty client.value.image }">
+				                            <c:set var="image"><c:out value="${ client.value.image }" /></c:set>
+				                            <a href="<c:url value="/image/${ image }" />" >Voir</a>
+				                        </c:if>
+									</td>
 									<td class="text-center"><a href="<c:url value="/suppressionClient"><c:param name="suppression" value="${ client.key }" /></c:url>"><img src="<c:url value="/inc/supprimer.png"/>" /></a>
 								</tr>
 							</c:forEach>

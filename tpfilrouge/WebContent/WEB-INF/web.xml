@@ -48,7 +48,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>Image</servlet-name>
-		<servlet-class>com.sdzee.tp.servlets.Image</servlet-class>
+		<servlet-class>com.pge.servlets.Image</servlet-class>
 		<init-param>
 			<param-name>chemin</param-name> 
 			<param-value>/fichiers/images/</param-value> 
@@ -78,6 +78,10 @@
 	<servlet-mapping>
 		<servlet-name>SuppressionCommande</servlet-name>
 		<url-pattern>/suppressionCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Image</servlet-name>
+		<url-pattern>/image/*</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>
