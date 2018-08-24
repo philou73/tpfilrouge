@@ -12,5 +12,6 @@
 		<c:forEach items="${ messages }" var="message" varStatus="boucle">
 			<p>{ $boucle.count }. ${ message }</p> 
 		</c:forEach>
+		<p>Fin du tableau</p> 
 	</body>
 </html>
